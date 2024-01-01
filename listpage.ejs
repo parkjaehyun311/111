@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>익명 게시판</title>
+    <link rel="stylesheet" href="/css/reset.min.css">
+    <link rel="stylesheet" href="/css/font.css"> 
+    <link rel="stylesheet" href="/css/common.css">
+    <style>
+
+        section .inner {
+            max-width: 1200px;
+            margin : 0 auto;
+            padding: 40px 0px;
+
+        }
+        section .inner h1 {
+            text-align: center;
+            padding:20px 0px;
+            font-size: 2.4rem;
+        } 
+        section .inner .board{
+            border:1px solid #000;
+            width: 900px;
+            height:500px;
+            margin:0 auto;
+        }
+
+        section .inner .board .row {
+            display:flex;
+            align-items: center;
+            min-height:50px;
+         }
+
+        section .inner .board .row .title{
+            flex-grow: 1;
+            margin: 0px 15px 0px 10px;
+        }
+
+        section .inner .board .row .date{ 
+            min-width: 140px;
+            text-align: center; 
+        }
+
+
+        section .inner .board .row.header {
+            text-align: center;
+            font-size: 1.8rem; 
+        }
+
+        section .inner .board .row.item {
+            border-top: 1px solid #444;
+            font-size: 1.6rem;
+            line-height: 50px;
+        }
+ 
+        section .inner .board .row.item:hover{
+            background-color: #ddd;;
+        }
+        section .inner .board .row.item.empty:hover{
+            background-color: transparent;
+        }
+
+        section .inner .paging {
+            width:900px;
+            text-align: center;
+            margin: 0 auto;
+            padding:20px 0px;
+        }
+        section .inner .paging a{
+            margin:0px 20px;
+            border:1px solid #000;
+            padding : 1px 10px;
+            font-size: 1.6rem;
+        }
+        section .inner .paging a:hover {
+            background-color: #ddd;
+        }
+        section .inner .btns{
+            width:900px;
+            margin:0 auto;
+            text-align: right;
+            padding: 20px 0px;
+        }
+
+        section .inner .btns a{ 
+            border: 1px solid #000;
+            background-color: #fff;
+            padding:10px 30px;
+            margin-left: 20px;
+            font-size: 1.6rem;
+        }
+
+        section .inner .btns a:hover{
+            background-color: #ddd;
+        }
+
+        @media screen and (max-width:990px) {
+
+            section .inner {
+                max-width: 100%;
+            }
+            section .inner .board{ 
+                margin:0px 50px; 
+                width:auto;
+            } 
+            section .inner .board .row .date {
+                min-width: 120px;
+            }
+            section .inner .btns { 
+                margin:0px 50px;
+                width:auto;
+            }
+
+            section .inner .paging { 
+                margin:0px 50px;
+                width:auto;
+            }
+
+        }
+
+        @media screen and (max-width:660px){
+ 
+            section .inner {
+                padding:40px 20px;
+            }
+
+            section .inner .board{ 
+                margin:0px 0px; 
+            }
+
+            section .inner .btns { 
+                margin:0px 0px;  
+            }
+
+            section .inner .paging { 
+                margin:0px 0px; 
+            }
+        }
+
+
+        @media screen and (max-width:420px){
+            section .inner {
+                padding:15px 10px;
+            }
+            section .inner h1 {
+                font-size: 2.0rem;
+            }
+
+            section .inner .board .row.header {
+                font-size: 16px;
+                line-height: 20px;
+            }
+
+            section .inner .board .row.item {
+                line-height: 20px;
+                font-size: 14px;
+            }
+            section .inner .board .row .title {
+                margin:0px 5px 0px 5px;
+            }
+            section .inner .board .row .date {
+                min-width: 70px;
+                width:70px;
+            }
+
+
+            section .inner .paging a{
+                font-size: 1.4rem;
+            }
+
+
+            section .inner .btns a{ 
+                padding:5px 15px;
+                font-size: 1.4rem;
+            }
+        }
+    </style>
+</head>
+<body> 
+    
+    <header>
+        <div class="logo">
+            <a href="./class.html">
+                <img src="/img/logo.jpeg" alt="">
+                <span>ㅇㅁㄱㄱ</span>
+            </a>
+        </div>
+    </header>
+
+    <section>
+        <div class="inner">
+            <h1><a href="./class.html">우리반 익명공간</a></h1>
+
+            <div class="board">
+               
+                <div class="row header">
+                    <div class="col title">제목</div>
+                    <div class="col date">날짜</div>
+                </div>
+                
+                <% for(var i=0;i<cnt;i++) { %>
+                    <a href="./view?id=<%= datas[i].id %>" class="row item">
+                        <div class="col title ellipsis"><%= datas[i].title %></div>
+                        <div class="col date"><%= datas[i].date %></div>
+                    </a>
+                <% } %>
+                <% for(var i=0;i<9-cnt;i++){ %>
+                    <a class="row item empty"></a>
+                <% } %>
+                
+            
+                
+            </div>
+            <div class="paging">
+                <a href="./?page=<%=prevPage%>"><<</a>
+                <a href="./?page=<%=nextPage%>">>></a>
+            </div>
+            
+            
+             <!-- 기본 페이지 코드 중 로그인 여부 확인 부분 추가 -->
+<!-- 기본 페이지 코드 중 로그인 여부 확인 부분 수정 -->
+<div class="btns"> 
+    <% if(locals.user) { %>
+        <!-- 로그인 중인 경우 -->
+        <a href="/logout">로그아웃</a>
+        <a href="/profile">프로필</a>
+        <a href="./write">글쓰기</a>
+    <% } else { %>
+        <!-- 로그아웃 중인 경우 -->
+        <a href="./signup">회원가입</a>
+        <a href="./login">로그인</a>
+    <% } %>
+</div>
+
+
+
+        </div>
+        
+
+
+    </section>
+    
+    <footer>
+        <div class="inner">
+            <p>제작자 : 박땡땡</p>
+            <p>기능 추가 문의는 <a href="#">카카오톡</a>으로 해주세요.</p>
+        </div>
+    </footer>
+</body>
+</html>

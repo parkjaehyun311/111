@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>익명 게시판</title>
+    <link rel="stylesheet" href="/css/reset.min.css">
+    <link rel="stylesheet" href="/css/font.css">
+    <link rel="stylesheet" href="/css/common.css">
+    <style>
+
+        section .inner {
+            max-width: 1200px;
+            margin : 0 auto;
+            padding: 40px 0px;
+        }
+        section .inner h1 {
+            text-align: center;
+            padding:20px 0px;
+            font-size: 2.4rem;
+        }
+
+        section .inner .board{
+            border:1px solid #000;
+            width: 900px;
+            min-height:500px;
+            margin:0 auto;
+            display:flex;
+            flex-direction: column;
+        }
+        section .inner .board .row {
+            display:flex; 
+         }
+
+        section .inner .board .row .title{
+            width:100%; 
+        } 
+        section .inner .board .row .title input {
+            width: 100%;
+            font-size: 1.8rem;
+            border:0px transparent;
+        }
+
+        section .inner .board .row.header {
+            padding:10px 5px 10px 15px;
+            align-items: center;
+            font-size: 1.8rem;
+            border-bottom: 1px solid #000;
+        } 
+        section .inner .board .body {
+            flex-grow: 1;
+            padding:10px 5px 10px 15px; 
+        }
+        
+        section .inner .board .body textarea{
+            width:100%; 
+            height:auto;
+            font-size: 1.6rem;
+        }
+        
+        section .inner .code {
+            width:900px;
+            margin:10px auto 0 auto;
+            font-size: 1.6rem;
+            display: flex;
+            align-items: center;
+        }
+        section .inner .code input {
+            font-size: 1.6rem;
+            width: 100%;
+            flex-grow: 1;
+            border:1px solid #000;
+            border-radius: 0px;
+            padding:3px 5px;
+        }
+        section .inner .code label{
+            width:80px;
+        }
+        section .inner .paging {
+            width:900px;
+            text-align: center;
+            margin: 0 auto;
+            padding:20px 0px;
+        }
+        section .inner .paging a{
+            margin:0px 20px;
+            border:1px solid #000;
+            padding : 1px 10px;
+            font-size: 1.6rem;
+        }
+        section .inner .paging a:hover {
+            background-color: #ddd;
+        }
+        section .inner .btns{
+            width:900px;
+            margin:0 auto;
+            text-align: right;
+            padding: 20px 0px;
+        }
+
+        section .inner .btns a{ 
+            border: 1px solid #000;
+            background-color: #fff;
+            padding:10px 30px;
+            margin-left: 20px;
+            font-size: 1.6rem;
+        }
+
+        section .inner .btns a:hover{
+            background-color: #ddd;
+        }
+
+
+        @media screen and (max-width:990px) {
+
+            section .inner {
+                max-width: 100%;
+            }
+            section .inner .board{
+                width:auto;
+                margin:0px 50px;
+            }
+
+            section .inner .code {
+                width:auto;
+                margin:10px 50px;
+             }
+
+            section .inner .paging {
+                width:auto;
+                margin:0px 50px;
+            }
+
+            section .inner .btns{
+                width:auto;
+                margin:0px 50px;
+            }
+        }
+        
+
+
+        @media screen and (max-width:660px){
+ 
+            section .inner {
+                padding:40px 20px;
+            }
+            section .inner .board{
+                width:auto;
+                margin:0;
+            }
+
+            section .inner .code {
+                width:auto;
+                margin:10px 0px;
+             }
+
+            section .inner .paging {
+                width:auto;
+                margin:0;
+            }
+
+            section .inner .btns{
+                width:auto;
+                margin:0;
+            }
+        }
+
+
+        @media screen and (max-width:420px){
+            section .inner {
+                padding:15px 10px;
+            }
+            section .inner h1 {
+                font-size: 2.0rem;
+            }
+            section .inner .board .row .title input {
+                font-size: 1.6rem;
+            }
+            section .inner .board .body textarea {
+                font-size: 1.4rem;
+                line-height: 2.0rem;
+            }
+            section .inner .code {
+                font-size: 1.4rem;
+            }
+            section .inner .code input{
+                font-size: 1.4rem;
+            }
+ 
+            section .inner .paging a{
+                font-size: 1.4rem;
+            } 
+
+            section .inner .btns{
+                margin-top: 20px;
+            }
+            section .inner .btns a{ 
+                padding:5px 15px;
+                font-size: 1.4rem;
+            }
+        }
+
+    </style>
+</head>
+<body> 
+    
+    <header>
+        <div class="logo">
+            <a href="./class.html">
+                <img src="/img/logo.jpeg" alt="">
+                <span>ㅇㅁㄱㄱ</span>
+            </a>
+        </div>
+    </header>
+
+    <section>
+        <div class="inner">
+            <h1><a href="./class.html">우리반 익명공간</a></h1>
+
+            <form id="writeForm" action="/write" method="post">
+                <article class="board">
+                
+                    <div class="row header">
+                        <div class="col title"><input type="text" name="title" id="title" maxlength="80" placeholder="제목을 입력해 주세요."></div> 
+                    </div>
+                    <div class="body">
+                        <textarea name="content" id="content" cols="30" rows="21" placeholder="내용을 입력해 주세요."></textarea>
+                    </div>
+                </article> 
+                
+                <div class="code">
+                    <label for="code">익명 코드</label><input type="text" name="code" id="code" placeholder="익명공간에 글을 쓰려면 코드값이 필요합니다.">
+                </div>
+            </form>
+            <div class="btns">
+                <a href="/">목록</a>
+                <a href="javascript:vpid(0);" onclick="submitForm();">저장</a>
+            </div>
+        </div>
+        
+
+
+    </section>
+    
+    <footer>
+        <div class="inner">
+            <p>제작자 : 박땡땡</p>
+            <p>기능 추가 문의는 <a href="#">카카오톡</a>으로 해주세요.</p>
+        </div>
+    </footer>
+
+    <script>
+        function checkData(){
+            let titleDom = document.getElementById("title");
+            let contentDom = document.getElementById("content");
+            let codeDom = document.getElementById("code");
+
+            const title = titleDom.value;
+            const content = contentDom.value;
+            const code = codeDom.value;
+
+            if(title.trim() ==""){
+                alert("제목을 입력해 주세요.");
+                titleDom.focus();
+                return false;
+            }
+
+            if(content.trim() ==""){
+                alert("내용을 입력해 주세요");
+                contentDom.focus();
+                return false;
+            }
+
+            if(code.trim() ==""){
+                alert("익명 코드를 입력해 주세요.");
+                codeDom.focus();
+                return false;
+            }
+            return true;
+        }
+
+        function submitForm(){
+            let dom = document.getElementById("writeForm");
+            if(checkData() == true){
+                dom.submit();
+            }
+
+        }
+
+    </script>
+</body>
+</html>

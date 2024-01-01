@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>익명 게시판</title>
+    <link rel="stylesheet" href="../css/reset.min.css">
+    <link rel="stylesheet" href="../css/font.css">
+    <link rel="stylesheet" href="../css/common.css">
+    <style>
+
+        section .inner {
+            max-width: 1200px;
+            margin : 0 auto;
+            padding: 40px 0px;
+        }
+        section .inner h1 {
+            text-align: center;
+            padding:20px 0px;
+            font-size: 2.4rem;
+        }
+
+        section .inner .board{
+            border:1px solid #000;
+            width: 900px;
+            min-height:500px;
+            margin:0 auto;
+        }
+        section .inner .board .row {
+            display:flex; 
+         }
+
+        section .inner .board .row .title{
+            width:760px;
+            margin: 0px 15px 0px 10px;
+        }
+
+        section .inner .board .row .date{
+            width:140px;
+            text-align: center; 
+            font-size: 1.6rem;
+        }
+
+
+        section .inner .board .row.header {
+            padding:10px 5px;
+            align-items: center;
+            font-size: 1.8rem;
+            border-bottom: 1px solid #000;
+        }
+
+        section .inner .board .row.item {
+            border-top: 1px solid #444;
+            line-height: 50px;
+        }
+ 
+        section .inner .board .row.item:hover{
+            background-color: #ddd;;
+        }
+        section .inner .board .row.item.empty:hover{
+            background-color: transparent;
+        }
+        section .inner .board .body {
+            padding:10px 15px 10px 15px; 
+            font-size: 1.6rem;
+            line-height: 2.0rem;
+        }
+
+        section .inner .paging {
+            width:900px;
+            text-align: center;
+            margin: 0 auto;
+            padding:20px 0px;
+        }
+        section .inner .paging a{
+            margin:0px 20px;
+            border:1px solid #000;
+            padding : 1px 10px;
+        }
+        section .inner .paging a:hover {
+            background-color: #ddd;
+        }
+        section .inner .btns{
+            width:900px;
+            margin:0 auto;
+            text-align: right;
+            padding: 20px 0px;
+        }
+
+        section .inner .btns a{ 
+            border: 1px solid #000;
+            background-color: #fff;
+            padding:10px 30px;
+            margin-left: 20px;
+            font-size: 1.6rem;
+        }
+
+        section .inner .btns a:hover{
+            background-color: #ddd;
+        }
+
+        section .inner .comments {
+            width:900px;
+            margin:30px auto 0px auto;
+        }
+        section .inner .comments h3 {
+            margin:0px 0px 5px 0px;
+            line-height: 24px;
+            font-size: 1.8rem;
+        }
+
+
+        section .inner .comments .inputs {
+            display:flex;
+        }
+        section .inner .comments .inputs input {
+            flex-grow: 1;
+            font-size: 18px;
+        }
+
+        section .inner .comments .inputs button {
+            border:1px solid #000;
+            background-color: #fff;
+            padding:5px 20px;
+            cursor:pointer;
+            margin-left: 10px;
+        }
+        section .inner .comments .inputs button:hover{
+            background-color: #ddd;
+        }
+
+        section .inner .comments .list {
+            margin-top: 20px;
+            border-top: 1px solid #000;
+        }
+
+        section .inner .comments .list li {
+            padding:15px 0px 15px 10px;
+            border-bottom: 1px solid #000;
+            font-size: 1.6rem;
+            line-height: 2.0rem;
+            align-items: center;;
+            display: flex;
+        }
+        section .inner .comments .list li p{
+            flex-grow: 1;
+            position:relative;
+            align-items: center;
+        }
+
+        section .inner .comments .list li p .date{
+            font-size: 1.4rem;
+            min-width: 120px;
+            margin-left: 10px;
+        }
+        section .inner .comments .list li.recomment p {
+            display: flex;  
+            width: 100%;
+        }
+        section .inner .comments .list li.recomment img { 
+            width:20px;
+            height:20px;
+            margin-right: 10px;
+        }
+        section .inner .comments .list li p input{
+            font-size: 18px;
+            width: 100%;
+        }
+        section .inner .comments .list li button { 
+            margin-left: 8px;
+            min-width:70px;
+            background-color: #fff;
+            cursor:pointer;
+            border:1px solid #000;
+            padding:5px 20px;
+        }
+
+        section .inner .comments .list li button:hover{
+            background-color: #ddd;
+        }
+        
+    
+        @media screen and (max-width:990px) {
+
+            section .inner {
+                max-width: 100%;
+            }
+            section .inner .board{ 
+                margin:0px 50px; 
+                width:auto;
+            } 
+            section .inner .board .row .date {
+                min-width: 120px;
+            }
+            section .inner .btns { 
+                margin:0px 50px;
+                width:auto;
+            }
+
+            section .inner .paging { 
+                margin:0px 50px;
+                width:auto;
+            }
+
+            section .inner .comments  {
+                width:auto;
+                margin:30px 50px;
+            }
+        }
+
+        @media screen and (max-width:660px){
+ 
+            section .inner {
+                padding:40px 20px;
+            }
+
+            section .inner .board{ 
+                margin:0px 0px; 
+            }
+
+            section .inner .btns { 
+                margin:0px 0px;  
+            }
+
+            section .inner .paging { 
+                margin:0px 0px; 
+            }
+
+            section .inner .comments  {
+                width:auto;
+                margin:30px 0px;
+            }
+        }
+
+
+
+        @media screen and (max-width:420px){
+            section .inner {
+                padding:15px 10px;
+            }
+            section .inner h1 {
+                font-size: 2.0rem;
+            }
+
+            section .inner .board .header { 
+                display: block;
+                line-height: 20px;
+            }
+            section .inner .board .row .title {
+                width: auto;
+                font-size: 1.6rem;
+            }
+            section .inner .board .row .date {
+                width: auto;
+                text-align: right;
+                margin-right: 10px;
+                font-size: 1.4rem;
+            }
+            section .inner .board .body{
+                font-size: 1.4rem;
+                padding:5px 2px 5px 10px;
+            }
+            
+            section .inner .paging a{
+                font-size: 1.4rem;
+            } 
+
+            section .inner .btns a{ 
+                padding:5px 15px;
+                font-size: 1.4rem;
+            }
+            section .inner .comments h3 {
+                font-size: 1.6rem;
+            }
+
+            section .inner .comments .inputs input {
+                font-size: 1.4rem;
+            }
+            section .inner .comments .list li{
+                font-size: 1.4rem;
+            }
+            section .inner .comments .list li.recomment img {
+                width:16px;
+                height:16px;
+            }
+            section .inner .comments .list li.recomment p { 
+                display: block;
+            }
+            section .inner .comments .list li p .date {
+                display: block;
+                margin:0px;
+            }
+            section .inner .comments .list li.recomment.inputform{
+                display: block;
+                text-align: right;
+            }
+            section .inner .comments .list li.recomment.inputform p{
+                display: flex;
+                margin-bottom: 10px;
+            }
+        }
+    </style>
+</head>
+<body> 
+    
+    <header>
+        <div class="logo">
+            <a href="./class.html">
+                <img src="/img/logo.jpeg" alt="">
+                <span>ㅇㅁㄱㄱ</span>
+            </a>
+        </div>
+    </header>
+
+    <section>
+        <div class="inner">
+            <h1><a href="./class.html">우리반 익명공간</a></h1>
+
+            <article class="board">
+               
+                <div class="row header">
+                    <div class="col title"><%= article.title %></div>
+                    <div class="col date"><%= article.date %></div>
+                </div>
+                <div class="body">
+                    <%= article.content %>
+                </div>
+            </article> 
+
+            <div class="btns">
+                <a href="/">목록</a>
+            </div>
+            
+            <div class="comments">
+                <h3>댓글</h3>
+                <div class="inputs">
+                    <input type="text" name="" id="">
+                    <button>작성</button>
+                </div>
+                <ul class="list">
+                    <li>
+                        <p>그대가 왕이 될 상인가아아??<span class="date">(2023-03-13 11:00)</span></p>   
+                        <button>답글</button>
+                    </li>
+                    <li class="recomment inputform">
+                        <p><img src="/img/arrow.svg" alt=""><input type="text"></p>   
+                        <button>작성</button><button>취소</button>
+                    </li>
+                    <li>
+                        <p>그대가 왕이 될 상인가아아??대가 왕이 될 상인가아아??대가 왕이 될 상인가아아??대가 왕이 될 상인가아아??대가 왕이 될 상인가아아??대가 왕이 될 상인가아아??대가 왕이 될 상인가아아??대가 왕이 될 상인가아아??대가 왕이 될 상인가아아??대가 왕이 될 상인가아아??대가 왕이 될 상인가아아??대가 왕이 될 상인가아아??<span class="date">(2023-03-13 11:00)</span></p>   
+                        <button>답글</button>
+                    </li>
+                    <li class="recomment">
+                        <p><img src="/img/arrow.svg" alt="">그대가 왕이될 상ㅇ니가 대가 왕이될 상ㅇ니가 ?대가 왕이될 상ㅇ니가 ?대가 왕이될 상ㅇ니가 ?대가 왕이될 상ㅇ니가 ?대가 왕이될 상ㅇ니가 ?대가 왕이될 상ㅇ니가 ?대가 왕이될 상ㅇ니가 ?대가 왕이될 상ㅇ니가 ?대가 왕이될 상ㅇ니가 ?대가 왕이될 상ㅇ니가 ???ㅇㅇ<span class="date">(2023-03-13 11:00)</span></p>    
+                    </li>  
+                    <li class="recomment inputform">
+                        <p><img src="/img/arrow.svg" alt=""><input type="text"></p>   
+                        <button>작성</button><button>취소</button>
+                    </li> 
+                    <li>
+                        <p>그대가 왕이 될 상인가아아??<span class="date">(2023-03-13 11:00)</span></p>   
+                        <button>답글</button>
+                    </li>
+                    <li class="recomment">
+                        <p><img src="/img/arrow.svg" alt="">그대가 왕이될 상ㅇ니가 대가 왕이될 상ㅇ니가 ?대가 왕이될 상ㅇ니가 ?대가 왕이될 상ㅇ니가 ?대가 왕이될 상ㅇ니가 ?대가 왕이될 상ㅇ니가 ?대가 왕이될 상ㅇ니가 ?대가 왕이될 상ㅇ니가 ?대가 왕이될 상ㅇ니가 ?대가 왕이될 상ㅇ니가 ?대가 왕이될 상ㅇ니가 ???ㅇㅇ<span class="date">(2023-03-13 11:00)</span></p>    
+                    </li>  
+                    <li class="recomment">
+                        <p><img src="/img/arrow.svg" alt="">그대가 왕이될 상ㅇ니가 대가 왕이될 상ㅇ니가 ?대가 왕이될 상ㅇ니가 ?대가 왕이될 상ㅇ니가 ?대가 왕이될 상ㅇ니가 ?대가 왕이될 상ㅇ니가 ?대가 왕이될 상ㅇ니가 ?대가 왕이될 상ㅇ니가 ?대가 왕이될 상ㅇ니가 ?대가 왕이될 상ㅇ니가 ?대가 왕이될 상ㅇ니가 ???ㅇㅇ<span class="date">(2023-03-13 11:00)</span></p>    
+                    </li> 
+                    <li>
+                        <p>그대가 왕이 될 상인가아아??<span class="date">(2023-03-13 11:00)</span></p>   
+                        <button>답글</button>
+                    </li>
+                    <li>
+                        <p>그대가 왕이 될 상인가아아??<span class="date">(2023-03-13 11:00)</span></p>   
+                        <button>답글</button>
+                    </li>
+                    <li class="recomment">
+                        <p><img src="/img/arrow.svg" alt="">그대가 왕이될 상ㅇ니가 대가 왕이될 상ㅇ니가 ?대가 왕이될 상ㅇ니가 ?대가 왕이될 상ㅇ니가 ?대가 왕이될 상ㅇ니가 ?대가 왕이될 상ㅇ니가 ?대가 왕이될 상ㅇ니가 ?대가 왕이될 상ㅇ니가 ?대가 왕이될 상ㅇ니가 ?대가 왕이될 상ㅇ니가 ?대가 왕이될 상ㅇ니가 ???ㅇㅇ<span class="date">(2023-03-13 11:00)</span></p>    
+                    </li>  
+                    <li class="recomment">
+                        <p><img src="/img/arrow.svg" alt="">그대가 왕이될 상ㅇ니가 대가 왕이될 상ㅇ니가 ?대가 왕이될 상ㅇ니가 ?대가 왕이될 상ㅇ니가 ?대가 왕이될 상ㅇ니가 ?대가 왕이될 상ㅇ니가 ?대가 왕이될 상ㅇ니가 ?대가 왕이될 상ㅇ니가 ?대가 왕이될 상ㅇ니가 ?대가 왕이될 상ㅇ니가 ?대가 왕이될 상ㅇ니가 ???ㅇㅇ<span class="date">(2023-03-13 11:00)</span></p>    
+                    </li> 
+                </ul>
+            </div>
+        </div>
+        
+
+
+    </section>
+    
+    <footer>
+        <div class="inner">
+            <p>제작자 : 박땡땡</p>
+            <p>기능 추가 문의는 <a href="#">카카오톡</a>으로 해주세요.</p>
+        </div>
+    </footer>
+</body>
+</html>
